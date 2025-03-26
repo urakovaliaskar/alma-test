@@ -2,12 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
-  Container,
-  Sidebar,
   Content,
   Title,
   SearchFilterContainer,
@@ -20,14 +15,10 @@ import {
   TableHeader,
   TableRow,
   TableFooter,
-  UserProfile,
-  Avatar,
-  UserName,
 } from "@/styles";
 import { isAuthenticated } from "@/utils/auth";
 
 const LeadsPage = () => {
-  const pathname = usePathname();
   const [statusFilter, setStatusFilter] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -95,30 +86,6 @@ const LeadsPage = () => {
   };
 
   return (
-    <Container>
-      <Sidebar>
-        <Image src="/logo.png" alt="Logo" width={100} height={45} />
-        <Link
-          href="/dashboard"
-          style={{
-            fontWeight: pathname === "/dashboard" ? "bold" : "normal",
-          }}
-        >
-          Leads
-        </Link>
-        <Link
-          href="/settings"
-          style={{
-            fontWeight: pathname === "/settings" ? "bold" : "normal",
-          }}
-        >
-          Settings
-        </Link>
-        <UserProfile>
-          <Avatar>A</Avatar>
-          <UserName>Admin</UserName>
-        </UserProfile>
-      </Sidebar>
       <Content>
         <Title>Leads</Title>
         <SearchFilterContainer>
@@ -214,7 +181,6 @@ const LeadsPage = () => {
           )}
         </Table>
       </Content>
-    </Container>
   );
 };
 
