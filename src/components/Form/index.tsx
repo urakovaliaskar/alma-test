@@ -124,7 +124,7 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
   return (
     <FormContainer>
       <Header url="/info.webp" title="Want to understand your visa options?" text="Submit the form below and our team of experienced attorneys will review your information and send a preliminary assessment of your case based on your goals." />
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit} role="form">
         <StyledInput
           type="text"
           name="firstName"
@@ -181,6 +181,7 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
         <StyledFileInput
           id="file-upload"
           type="file"
+          placeholder="Resume/CV Upload"
           onChange={handleFileChange}
           aria-invalid={!!errors.file}
         />
@@ -189,9 +190,9 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
         <Header url="/heart.png" title="How can we help you?" />
         <StyledTextArea
           name="additionalInfo"
-          placeholder="what is your current status and when does it expire!
+          placeholder="What is your current status and when does it expire!
 What is your past immigration history? Are you
-or short-term employment visa or both? Are there dily ultreme considerators"
+or short-term employment visa or both? Are there any timeline considerators?"
           onChange={handleChange}
           aria-invalid={!!errors.additionalInfo}
           rows={5}

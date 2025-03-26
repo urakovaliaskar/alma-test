@@ -7,6 +7,7 @@ export const Header: FC<HeaderProps> = ({ url, title, text }) => {
   return (
     <StyledFormHeader>
       <Image
+        role="img"
         src={url}
         alt=""
         tabIndex={-1}
