@@ -203,14 +203,17 @@ export const SearchFilterContainer = styled.div`
   gap: 10px;
   margin-bottom: 20px;
   max-width: 400px;
+  position: relative; /* Added for positioning the icon */
 `;
 
 export const SearchInput = styled.input`
   flex: 1;
-  padding: 8px;
+  padding: 8px 8px 8px 30px; /* Added left padding for the icon */
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
+  background: url('/search.png') no-repeat 8px center; /* Added search icon */
+  background-size: 16px; /* Adjust icon size */
 `;
 
 export const StatusDropdown = styled.select`
@@ -237,6 +240,7 @@ export const TableHeader = styled.th`
   text-align: left;
   font-weight: 300;
   color: #B6B6B6;
+  border-bottom: 1px solid #ddd;
 `;
 
 export const TableRow = styled.tr`
