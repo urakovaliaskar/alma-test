@@ -1,25 +1,20 @@
 "use client"
 
-import Image from "next/image";
-import { FormContainer, FormTitle, FormSubtitle, SubmitButton } from "@/styles";
+import { useRouter } from "next/navigation";
+import { Header } from "@/components";
+import { FormContainer, SubmitButton } from "@/styles";
 
 export default function Confirmation() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/");
+  };
   return (
     <FormContainer>
-      <Image
-        src="/info.webp"
-        alt=""
-        tabIndex={-1}
-        aria-hidden="true"
-        width={100}
-        height={100}
-      />
-      <FormTitle>Thank You</FormTitle>
-      <FormSubtitle>
-        Your information was submitted to our team of immigration attorneys.
-        Expect an email from hello@tryalma.ai
-      </FormSubtitle>
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <Header url="/info.webp" title="Thank You" text="Your information was submitted to our team of immigration attorneys.
+        Expect an email from hello@tryalma.ai" />
+      <SubmitButton onClick={handleClick}>Go Back to Homepage</SubmitButton>
     </FormContainer>
   );
 }

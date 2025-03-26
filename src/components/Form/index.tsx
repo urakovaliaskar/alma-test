@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { FormDataProps } from "@/types";
 import {
   FormContainer,
-  FormTitle,
-  FormSubtitle,
   StyledForm,
   StyledInput,
   StyledCheckboxGroup,
@@ -14,6 +11,7 @@ import {
   SubmitButton,
   ErrorMessage,
 } from "@/styles";
+import { Header } from "@/components";
 
 interface FormProps {
   onSubmit: (formData: FormDataProps) => void;
@@ -125,20 +123,7 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
 
   return (
     <FormContainer>
-      <Image
-        src="/info.webp"
-        alt=""
-        tabIndex={-1}
-        aria-hidden="true"
-        width={100}
-        height={100}
-      />
-      <FormTitle>Want to understand your visa options?</FormTitle>
-      <FormSubtitle>
-        Submit the form below and our team of experienced attorneys will review
-        your information.
-      </FormSubtitle>
-
+      <Header url="/info.webp" title="Want to understand your visa options?" text="Submit the form below and our team of experienced attorneys will review your information and send a preliminary assessment of your case based on your goals." />
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
           type="text"
@@ -175,15 +160,8 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
           aria-invalid={!!errors.url}
         />
         {errors.url && <ErrorMessage>{errors.url}</ErrorMessage>}
-        <Image
-          src="/heart.png"
-          alt=""
-          tabIndex={-1}
-          aria-hidden="true"
-          width={100}
-          height={100}
-        />
-        <FormTitle>Visa categories of interest?</FormTitle>
+
+        <Header url="/dice.webp" title="Visa categories of interest?" />
         <StyledCheckboxGroup aria-invalid={!!errors.visaCategories}>
           {visaOptions.map((option) => (
             <CheckboxLabel key={option}>
@@ -207,15 +185,8 @@ export const Form: React.FC<FormProps> = ({ onSubmit }) => {
           aria-invalid={!!errors.file}
         />
         {errors.file && <ErrorMessage>{errors.file}</ErrorMessage>}
-        <Image
-          src="/dice.webp"
-          alt=""
-          tabIndex={-1}
-          aria-hidden="true"
-          width={100}
-          height={100}
-        />
-        <FormTitle>How can we help you?</FormTitle>
+
+        <Header url="/heart.png" title="How can we help you?" />
         <StyledTextArea
           name="additionalInfo"
           placeholder="what is your current status and when does it expire!

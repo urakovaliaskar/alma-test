@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { Header, Form } from "@/components";
+import { Banner, Form } from "@/components";
 import { FormDataProps } from "@/types";
 
 export default function Home() {
@@ -23,13 +23,13 @@ export default function Home() {
         throw new Error("Failed to submit form");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error(error);
     }
   };
 
   return (
     <>
-      <Header />
+      <Banner />
       <Form onSubmit={handleSubmit} />
     </>
   );

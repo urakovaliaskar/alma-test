@@ -7,3 +7,9 @@ export interface FormDataProps {
   file: File | null;
   additionalInfo: string;
 };
+
+export interface HeaderProps {
+    url: string;
+    title: string;
+    text?: string;
+}

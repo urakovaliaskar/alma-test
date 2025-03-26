@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Banner = styled.div`
+export const StyledBanner = styled.div`
     display: flex;
     background-image: url('/cucumbers.png');
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@ export const Banner = styled.div`
     }
 `;
 
-export const Logo = styled.div`
+export const StyledBannerLogo = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -32,7 +32,7 @@ export const Logo = styled.div`
     margin-left 250px;
 `;
 
-export const Text = styled.p`
+export const StyledBannerText = styled.p`
     font-weight: 900;
     font-size: 3rem;
 
@@ -53,17 +53,26 @@ export const FormContainer = styled.div`
   background-color: #fff;
 `;
 
+export const StyledFormHeader = styled.div`
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const FormTitle = styled.h2`
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 900;
   text-align: center;
   margin-bottom: 10px;
 `;
 
 export const FormSubtitle = styled.p`
   text-align: center;
-  max-width: 500px;
+  max-width: 460px;
   font-size: 14px;
+  font-weight: 900;
   color: #333;
 `;
 
@@ -81,7 +90,7 @@ export const errorStyles = css`
 
 export const StyledInput = styled.input<{ "aria-invalid": boolean }>`
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   padding: 12px;
   margin: 8px 0;
   border: 1px solid #ddd;
@@ -92,7 +101,7 @@ export const StyledInput = styled.input<{ "aria-invalid": boolean }>`
 
 export const StyledTextArea = styled.textarea<{ "aria-invalid": boolean }>`
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   padding: 12px;
   margin: 8px 0;
   border: 1px solid #ddd;
@@ -107,7 +116,7 @@ export const StyledCheckboxGroup = styled.div<{ ["aria-invalid"]: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   padding: 10px;
   border-radius: 6px;
   ${(props) => props["aria-invalid"] && errorStyles}
@@ -123,7 +132,7 @@ export const CheckboxLabel = styled.label`
 
 export const SubmitButton = styled.button`
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   padding: 12px;
   background-color: black;
   color: white;
@@ -144,12 +153,12 @@ export const ErrorMessage = styled.p`
   margin: 0;
   text-align: left;
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
 `;
 
 export const StyledFileInput = styled.input<{ "aria-invalid": boolean }>`
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
   padding: 12px;
   margin: 8px 0;
   border: 1px solid #ddd;

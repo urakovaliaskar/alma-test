@@ -1,23 +1,23 @@
-import React from 'react';
-import {
-    Banner,
-    Logo,
-    Text
-} from '@/styles';
+import Image from "next/image";
+import { StyledFormHeader, FormTitle, FormSubtitle } from "@/styles";
+import { HeaderProps } from "@/types";
+import { FC } from "react";
 
-export const Header: React.FC = () => {
-    return (
-        <div className="header-container">
-            <Banner>
-                <Logo>
-                    <h1 className="title">almà</h1>
-                    <Text>
-                        Get An Assessment<br />
-                        Of Your Immigration Case
-                    </Text>
-                </Logo>
-            </Banner>
-            
-        </div>
-    );
+export const Header: FC<HeaderProps> = ({ url, title, text }) => {
+  return (
+    <StyledFormHeader>
+      <Image
+        src={url}
+        alt=""
+        tabIndex={-1}
+        aria-hidden="true"
+        width={100}
+        height={100}
+      />
+      <FormTitle>{title}</FormTitle>
+      {text && <FormSubtitle>
+        {text}
+      </FormSubtitle>}
+    </StyledFormHeader>
+  );
 };
