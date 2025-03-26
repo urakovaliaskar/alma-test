@@ -168,3 +168,113 @@ export const StyledFileInput = styled.input<{ "aria-invalid": boolean }>`
   cursor: pointer;
   ${(props) => props["aria-invalid"] && errorStyles}
 `;
+
+export const Container = styled.div`
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to top left, #fff 0%, white 11%, white 51%, #FAFDD5 90%);
+  background-size: 30% 30%;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+`;
+
+export const Sidebar = styled.div`
+  width: 220px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid #e0e0e0;
+`;
+
+export const Content = styled.div`
+  flex: 1;
+  padding: 20px;
+`;
+
+export const Title = styled.h2`
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
+
+export const SearchFilterContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 400px;
+`;
+
+export const SearchInput = styled.input`
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+`;
+
+export const StatusDropdown = styled.select`
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: white;
+  color: #B6B6B6;
+`;
+
+export const Table = styled.table`
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  table-layout: fixed;
+`;
+
+export const TableHeader = styled.th`
+  background: #fff;
+  padding: 10px;
+  text-align: left;
+  font-weight: 300;
+  color: #B6B6B6;
+`;
+
+export const TableRow = styled.tr`
+`;
+
+export const TableCell = styled.td`
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+`;
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+`;
+
+export const PageButton  = styled.button`
+  background-color: white;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #fff;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &.active {
+    border: 1px solid black;
+    font-weight: bold;
+  }
+  &:disabled {
+    color: #ddd;
+  }
+`;
+export const TableFooter = styled.td`
+  padding: 10px;
+  text-align: center;
+`;
