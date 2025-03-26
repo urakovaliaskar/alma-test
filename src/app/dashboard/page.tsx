@@ -1,7 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Container,
   Sidebar,
@@ -17,75 +20,37 @@ import {
   TableHeader,
   TableRow,
   TableFooter,
+  UserProfile,
+  Avatar,
+  UserName,
 } from "@/styles";
-
-const leadsData = [
-  {
-    name: "Jorge Ruiz",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "PENDING",
-    country: "Mexico",
-  },
-  {
-    name: "Bahar Zamir",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "PENDING",
-    country: "Mexico",
-  },
-  {
-    name: "Mary Lopez",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "PENDING",
-    country: "Brazil",
-  },
-  {
-    name: "Li Zijin",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "PENDING",
-    country: "South Korea",
-  },
-  {
-    name: "Mark Antonov",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "PENDING",
-    country: "Russia",
-  },
-  {
-    name: "Jane Ma",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "PENDING",
-    country: "Mexico",
-  },
-  {
-    name: "Anand Jain",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "REACHED_OUT",
-    country: "Mexico",
-  },
-  {
-    name: "Anna Voronova",
-    submitted: "02/02/2024, 2:45 PM",
-    status: "PENDING",
-    country: "France",
-  },
-  {
-    name: "Judith Sorrow",
-    submitted: "02/02/2025, 3:45 PM",
-    status: "PENDING",
-    country: "England",
-  },
-];
+import { isAuthenticated } from "@/utils/auth";
 
 const LeadsPage = () => {
+  const pathname = usePathname();
   const [statusFilter, setStatusFilter] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [leads, setLeads] = useState(leadsData);
-  const [editingStatusIndex, setEditingStatusIndex] = useState<number | null>(null);
+  const [leads, setLeads] = useState<
+    { name: string; status: string; submitted: string; country: string }[]
+  >([]);
+  const [editingStatusIndex, setEditingStatusIndex] = useState<number | null>(
+    null
+  );
+
+  useEffect(() => {
+    const fetchLeads = async () => {
+      const response = await fetch("/api/leads");
+      const data = await response.json();
+      setLeads(data);
+    };
+
+    fetchLeads();
+  }, []);
 
   const itemsPerPage = 8;
   const filteredLeads = leads.filter(
-    (lead) =>
+    (lead: { name: string; status: string }) =>
       (statusFilter === "" || lead.status === statusFilter) &&
       (searchQuery === "" ||
         lead.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -133,8 +98,26 @@ const LeadsPage = () => {
     <Container>
       <Sidebar>
         <Image src="/logo.png" alt="Logo" width={100} height={45} />
-        <strong>Leads</strong>
-        <span>Settings</span>
+        <Link
+          href="/dashboard"
+          style={{
+            fontWeight: pathname === "/dashboard" ? "bold" : "normal",
+          }}
+        >
+          Leads
+        </Link>
+        <Link
+          href="/settings"
+          style={{
+            fontWeight: pathname === "/settings" ? "bold" : "normal",
+          }}
+        >
+          Settings
+        </Link>
+        <UserProfile>
+          <Avatar>A</Avatar>
+          <UserName>Admin</UserName>
+        </UserProfile>
       </Sidebar>
       <Content>
         <Title>Leads</Title>
@@ -157,10 +140,10 @@ const LeadsPage = () => {
         <Table>
           <thead>
             <tr>
-              <TableHeader>Name  &#8595;</TableHeader>
-              <TableHeader>Submitted  &#8595;</TableHeader>
-              <TableHeader>Status  &#8595;</TableHeader>
-              <TableHeader>Country  &#8595;</TableHeader>
+              <TableHeader>Name &#8595;</TableHeader>
+              <TableHeader>Submitted &#8595;</TableHeader>
+              <TableHeader>Status &#8595;</TableHeader>
+              <TableHeader>Country &#8595;</TableHeader>
             </tr>
           </thead>
           <tbody>
@@ -235,4 +218,20 @@ const LeadsPage = () => {
   );
 };
 
-export default LeadsPage;
+const ProtectedLeadsPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  return <LeadsPage />;
+};
+
+export default ProtectedLeadsPage;

@@ -278,3 +278,75 @@ export const TableFooter = styled.td`
   padding: 10px;
   text-align: center;
 `;
+
+export const LoginContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+export const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+export const LoginTitle = styled.h2`
+  text-align: center;
+`;
+
+export const LoginErrorMessage = styled.p`
+  color: red;
+  text-align: center;
+`;
+
+export const LoginInput = styled.input`
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+`;
+
+export const LoginSubmitButton = styled.button`
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+export const UserProfile = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+`;
+
+export const Avatar = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+export const UserName = styled.span`
+  font-weight: bold;
+`;
