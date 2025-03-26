@@ -86,101 +86,101 @@ const LeadsPage = () => {
   };
 
   return (
-      <Content>
-        <Title>Leads</Title>
-        <SearchFilterContainer>
-          <SearchInput
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <StatusDropdown
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-          >
-            <option value="">Status</option>
-            <option value="PENDING">Pending</option>
-            <option value="REACHED_OUT">Reached Out</option>
-          </StatusDropdown>
-        </SearchFilterContainer>
-        <Table>
-          <thead>
-            <tr>
-              <TableHeader>Name &#8595;</TableHeader>
-              <TableHeader>Submitted &#8595;</TableHeader>
-              <TableHeader>Status &#8595;</TableHeader>
-              <TableHeader>Country &#8595;</TableHeader>
-            </tr>
-          </thead>
-          <tbody>
-            {visibleLeads.map((lead, index) => (
-              <TableRow key={index}>
-                <TableCell>{lead.name}</TableCell>
-                <TableCell>{lead.submitted}</TableCell>
-                <TableCell>
-                  {editingStatusIndex === index ? (
-                    <select
-                      value={lead.status}
-                      onChange={(e) =>
-                        handleStatusChange(startIndex + index, e.target.value)
-                      }
-                    >
-                      <option value="PENDING">Pending</option>
-                      <option value="REACHED_OUT">Reached Out</option>
-                    </select>
-                  ) : (
-                    <button
-                      onClick={() => setEditingStatusIndex(index)}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {formatStatus(lead.status)}
-                    </button>
-                  )}
-                </TableCell>
-                <TableCell>{lead.country}</TableCell>
-              </TableRow>
-            ))}
-          </tbody>
-          {filteredLeads.length > itemsPerPage && (
-            <tfoot>
-              <TableRow>
-                <TableFooter colSpan={4}>
-                  <Pagination>
+    <Content>
+      <Title>Leads</Title>
+      <SearchFilterContainer>
+        <SearchInput
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <StatusDropdown
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+        >
+          <option value="">Status</option>
+          <option value="PENDING">Pending</option>
+          <option value="REACHED_OUT">Reached Out</option>
+        </StatusDropdown>
+      </SearchFilterContainer>
+      <Table>
+        <thead>
+          <tr>
+            <TableHeader>Name &#8595;</TableHeader>
+            <TableHeader>Submitted &#8595;</TableHeader>
+            <TableHeader>Status &#8595;</TableHeader>
+            <TableHeader>Country &#8595;</TableHeader>
+          </tr>
+        </thead>
+        <tbody>
+          {visibleLeads.map((lead, index) => (
+            <TableRow key={index}>
+              <TableCell>{lead.name}</TableCell>
+              <TableCell>{lead.submitted}</TableCell>
+              <TableCell>
+                {editingStatusIndex === index ? (
+                  <select
+                    value={lead.status}
+                    onChange={(e) =>
+                      handleStatusChange(startIndex + index, e.target.value)
+                    }
+                  >
+                    <option value="PENDING">Pending</option>
+                    <option value="REACHED_OUT">Reached Out</option>
+                  </select>
+                ) : (
+                  <button
+                    onClick={() => setEditingStatusIndex(index)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {formatStatus(lead.status)}
+                  </button>
+                )}
+              </TableCell>
+              <TableCell>{lead.country}</TableCell>
+            </TableRow>
+          ))}
+        </tbody>
+        {filteredLeads.length > itemsPerPage && (
+          <tfoot>
+            <TableRow>
+              <TableFooter colSpan={4}>
+                <Pagination>
+                  <PageButton
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={currentPage === 1 ? "disabled" : ""}
+                  >
+                    {"<"}
+                  </PageButton>
+                  {getPaginationNumbers().map((page) => (
                     <PageButton
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      className={currentPage === 1 ? "disabled" : ""}
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={page === currentPage ? "active" : ""}
                     >
-                      {"<"}
+                      {page}
                     </PageButton>
-                    {getPaginationNumbers().map((page) => (
-                      <PageButton
-                        key={page}
-                        onClick={() => handlePageChange(page)}
-                        className={page === currentPage ? "active" : ""}
-                      >
-                        {page}
-                      </PageButton>
-                    ))}
-                    <PageButton
-                      onClick={() => handlePageChange(currentPage + 1)}
-                      disabled={currentPage === totalPages}
-                      className={currentPage === totalPages ? "disabled" : ""}
-                    >
-                      {">"}
-                    </PageButton>
-                  </Pagination>
-                </TableFooter>
-              </TableRow>
-            </tfoot>
-          )}
-        </Table>
-      </Content>
+                  ))}
+                  <PageButton
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={currentPage === totalPages ? "disabled" : ""}
+                  >
+                    {">"}
+                  </PageButton>
+                </Pagination>
+              </TableFooter>
+            </TableRow>
+          </tfoot>
+        )}
+      </Table>
+    </Content>
   );
 };
 

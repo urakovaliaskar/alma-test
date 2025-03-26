@@ -1,44 +1,44 @@
 import styled, { css } from "styled-components";
 
 export const StyledBanner = styled.div`
-    display: flex;
-    background-image: url('/cucumbers.png');
-    background-repeat: no-repeat;
-    background-size: 200px 100%;
-    background-color: #DADEAB;
-    height: 400px;
-    width: 100%;
-    color: #000;
-    gap: 3rem;
-    padding: 100px 0 0 250px;
+  display: flex;
+  background-image: url('/cucumbers.png');
+  background-repeat: no-repeat;
+  background-size: 200px 100%;
+  background-color: #DADEAB;
+  height: 400px;
+  width: 100%;
+  color: #000;
+  gap: 3rem;
+  padding: 100px 0 0 250px;
 
-    @media (max-width: 768px) {
-        padding: 50px 0 0 20px;
-        background-image: none;
-    }
+  @media (max-width: 768px) {
+    padding: 50px 0 0 20px;
+    background-image: none;
+  }
 
-    @media (max-width: 480px) {
-        padding: 20px;
-        font-size: 0.5rem;
-        height: 150px;
-    }
+  @media (max-width: 480px) {
+    padding: 20px;
+    font-size: 0.5rem;
+    height: 150px;
+  }
 `;
 
 export const StyledBannerLogo = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-left 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-left 250px;
 `;
 
 export const StyledBannerText = styled.p`
-    font-weight: 900;
-    font-size: 3rem;
+  font-weight: 900;
+  font-size: 3rem;
 
-    @media (max-width: 480px) {
-        font-size: 1rem;
-    }
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 export const FormContainer = styled.div`
@@ -142,6 +142,7 @@ export const SubmitButton = styled.button`
   border-radius: 6px;
   cursor: pointer;
   margin-top: 20px;
+
   &:hover {
     opacity: 0.8;
   }
@@ -203,17 +204,17 @@ export const SearchFilterContainer = styled.div`
   gap: 10px;
   margin-bottom: 20px;
   max-width: 400px;
-  position: relative; /* Added for positioning the icon */
+  position: relative;
 `;
 
 export const SearchInput = styled.input`
   flex: 1;
-  padding: 8px 8px 8px 30px; /* Added left padding for the icon */
+  padding: 8px 8px 8px 30px;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
-  background: url('/search.png') no-repeat 8px center; /* Added search icon */
-  background-size: 16px; /* Adjust icon size */
+  background: url('/search.png') no-repeat 8px center;
+  background-size: 16px;
 `;
 
 export const StatusDropdown = styled.select`
@@ -243,8 +244,7 @@ export const TableHeader = styled.th`
   border-bottom: 1px solid #ddd;
 `;
 
-export const TableRow = styled.tr`
-`;
+export const TableRow = styled.tr``;
 
 export const TableCell = styled.td`
   padding: 10px;
@@ -258,7 +258,7 @@ export const Pagination = styled.div`
   gap: 10px;
 `;
 
-export const PageButton  = styled.button`
+export const PageButton = styled.button`
   background-color: white;
   color: black;
   padding: 5px 10px;
@@ -274,10 +274,12 @@ export const PageButton  = styled.button`
     border: 1px solid black;
     font-weight: bold;
   }
+
   &:disabled {
     color: #ddd;
   }
 `;
+
 export const TableFooter = styled.td`
   padding: 10px;
   text-align: center;
